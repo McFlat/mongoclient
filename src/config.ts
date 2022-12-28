@@ -1,9 +1,11 @@
-const nconf = require('nconf');
-const winston = require('winston');
+import nconf from 'nconf';
+import winston from 'winston';
+
+import { IMongoConfig } from "./interfaces";
 
 const uri = `mongodb://127.0.0.1:27017/${nconf.get('MONGO_DB') || 'hello-world'}`;
 
-const config = {
+const config:IMongoConfig  = {
   mongo: {
     uri: nconf.get('MONGO_URI') || uri,
     auth: {
@@ -30,4 +32,4 @@ const config = {
   }),
 };
 
-module.exports = config;
+export default config;
